@@ -1,18 +1,35 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/mattn/go-isatty"
 )
 
 func main() {
+	text := ""
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: lat \"text\"")
-		return
+		if isatty.IsTerminal(os.Stdin.Fd()) {
+			fmt.Println("Usage: lat [text]")
+			os.Exit(1)
+		} else {
+			b := bufio.NewReader(os.Stdin)
+			for {
+				r, _, err := b.ReadRune()
+				if err != nil {
+					break
+				}
+				text += string(r)
+			}
+		}
+	} else {
+		text = os.Args[1]
 	}
 
-	fmt.Println(ToLat(os.Args[1]))
+	fmt.Println(ToLat(text))
 }
 
 func ToLat(text string) string {
