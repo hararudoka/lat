@@ -4,11 +4,17 @@ This is a simple transliteration of Russian (and only Russian) Cyrillic to Latin
 
 NOTE: Caps are not supported.
 
+## Installation
+
+```bash
+$ go install github.com/hararudoka/lat
+```
+
 ## Usage
 
 ```bash
-$ ./lat "Привет, мир!"
+$ lat "Привет, мир!"
 Privet, mir!
 ```
 
-Add to path if you want to use it from anywhere.
+Also, you can clone (and edit!) and build this program, if you want to.
