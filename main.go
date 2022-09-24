@@ -29,7 +29,7 @@ func main() {
 		text = os.Args[1]
 	}
 
-	fmt.Println(ToLat(text))
+	fmt.Print(ToLat(text))
 }
 
 func ToLat(text string) string {
